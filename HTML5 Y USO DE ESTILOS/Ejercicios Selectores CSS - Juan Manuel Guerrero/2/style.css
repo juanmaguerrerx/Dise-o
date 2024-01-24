@@ -1,0 +1,23 @@
+.enlace{
+    text-decoration: none;
+}
+
+.enlace:active{
+    color:rgb(0, 255, 115);
+    text-decoration: none;
+}
+.enlace:visited{
+    color: brown;
+    text-decoration: underline;
+}
+.enlace:focus{
+    color:darkviolet;
+    text-decoration: none;
+}
+
+.enlace:hover{
+    color: rgb(255, 255, 255);
+    background-color: black;
+    text-decoration: underline;
+}
+

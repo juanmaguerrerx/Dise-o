@@ -1,0 +1,51 @@
+table {
+    border: 1px solid rgb(66, 66, 66);
+}
+
+td {
+    border: 0.5px solid black;
+}
+
+#uno {
+    color: teal;
+}
+
+#dos {
+    color: red;
+}
+
+#tres {
+    color: blue;
+}
+
+#cuatro {
+    color: orange;
+}
+
+#cinco {
+    color: purple;
+}
+
+#seis {
+    color: olive;
+}
+
+#siete {
+    color: fuchsia;
+}
+
+#ocho {
+    color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}

@@ -1,0 +1,98 @@
+#flex-container1 {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: stretch;
+    height: 250px;
+}
+
+#flex-container1 div {
+    width: 200px;
+    color: #FFF;
+    text-align: center;
+    line-height: 150px;
+    margin: 10px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #9B59B6;
+}
+
+#flex-container2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 250px;
+}
+
+#flex-container2 div {
+    width: 200px;
+    height: 150px;
+    color: #FFF;
+    text-align: center;
+    line-height: 150px;
+    margin: 10px;
+    font-size: 20px;
+    font-family: Arial;
+    background-color: #C0392B;
+}
+
+#flex-container3 {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-end;
+    height: 250px;
+}
+
+#flex-container3 div {
+    width: 200px;
+    height: 150px;
+    color: #FFF;
+    text-align: center;
+    line-height: 150px;
+    margin: 10px;
+    font-size: 20px;
+    font-family: Arial;
+    background-color: #3498DB;
+}
+
+#flex-container4 {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    height: 250px;
+}
+
+#flex-container4 div {
+    width: 200px;
+    height: 150px;
+    color: #FFF;
+    text-align: center;
+    line-height: 150px;
+    margin: 10px;
+    font-size: 20px;
+    font-family: Arial;
+    background-color: #17A589;
+}
+
+#flex-container5 {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: baseline;
+    height: 250px;
+}
+
+#flex-container5 div {
+    width: 200px;
+    height: 150px;
+    color: #FFF;
+    text-align: center;
+    line-height: 120px;
+    margin: 10px;
+    font-size: 20px;
+    font-family: Arial;
+    background-color: #E67E22;
+}

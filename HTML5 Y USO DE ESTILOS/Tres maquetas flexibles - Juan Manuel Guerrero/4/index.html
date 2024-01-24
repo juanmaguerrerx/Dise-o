@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Posicionamiento de cajas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div>
+    <h1>No define posicion</h1>
+  </div>
+  <div class="primera">
+    PRIMERA: No define posicion por lo que es STATIC
+    <div class="segunda">
+      SEGUNDA: Capa Absoluta (solo tiene como contenedor a "body" por lo tanto
+      es relativa a body)
+    </div>
+  </div>
+  <div class="tercera">
+    TERCERA: Capa de posicionamiento relativo. Se colooca teniendo en cuenta
+    las propiedades a partir de la posicion que le tocaría en el flujo HTML.
+    No afecta al resto de capas adyacentes
+  </div>
+  <div class="cuarto">CUARTA: Se ignora los valores de desplazamiento.</div>
+  <div style="position: relative">
+    <div class="quinto" style="position: relative; z-index: 1">
+      QUINTA: Capa absoluta, se referencia según su contenedor porque no es un
+      static
+      <div class="sexto">
+        SEXTA: Dentro de quinta. Absoluta se referencia dentro de su
+        contenedor porque este no es un static
+      </div>
+    </div>
+    <h1 style="
+          position: relative;
+          z-index: 0;
+          margin-top: -30px;
+          overflow: auto;
+        ">
+      pruebo en alguno de los div la propiedad overflow
+    </h1>
+  </div>
+  <h2>No define posicion</h2>
+  <h2>No define posicion</h2>
+  <p class="sticky">P STICKY</p>
+  <h3>Texto</h3>
+  <h3>Texto</h3>
+  <h3>Texto</h3>
+  <h3>Texto</h3>
+  <div class="sticky">CAJA STCIKY</div>
+  <h3>Texto</h3>
+  <h3>Texto</h3>
+  <h3>Texto</h3>
+  <div class="septimo">
+    SEPTIMA: Esta capa no se mueve al desplazar la ventana SEPTIMA: Esta capa
+    no se que mas pone no se ve
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+#ejemplo{
+    display: flex;
+    flex-flow:row wrap;
+    align-items: flex-start;
+    height: 240px;
+}
+#ejemplo div{
+    height: 21px;
+    width: 100px;
+    font-weight: bold;
+    color: white;
+    padding-top: 5vh;
+}
+
+.d1{
+    background-color: #82DAFE;
+}
+.d2{
+    background-color: #06A0DC;
+}
+.d3{
+    background-color: #0A82BE;
+}
+.d4{
+    background-color: #056DA4;
+}
+.d5{
+    background-color: #00557A;
+}
+.d6{
+    background-color: #053D4E;
+}
+.d7{
+    background-color: #051E54;
+}

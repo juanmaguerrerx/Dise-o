@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ejercicio 2 - Offset y ordenación</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css" media="screen">
+		body{
+            text-align: center;
+        }
+		div{
+            height:50px;border: 1px solid grey;
+        }
+		.col-lg-12{
+            background: rgb(0, 255, 0);
+        }
+		.azul{
+            background-color: #86ABE0;
+        }
+		.cel{
+            background: #00FFFD;
+        }
+		.gris{
+            background: #EEF2F5;
+        }
+		.naranja{
+            background: #FD9A57;
+        }
+	</style>
+</head>
+<body>
+
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Header</div>
+	</div>
+	
+	<div class="row">
+		<div class="azul col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-3 col-sm-3 col-xs-6">1</div>
+		<div class="azul col-lg-3 col-md-3 col-sm-3 col-xs-6">2</div>
+		<div class="clearfix visible-lg-block visible-md-block"></div>
+		<div class="azul col-lg-3 col-md-3 col-sm-3 col-xs-6">3</div>
+		<div class="azul col-lg-3 col-lg-offset-6 col-md-3 col-md-offset-6 col-sm-3 col-xs-6">4</div>
+	</div>
+
+	<div class="row">
+		<div class="cel col-sm-12 hidden-lg hidden-md hidden-xs">Tablet</div>
+	</div>
+
+	<div class="row">
+		<div class="gris col-lg-3 col-md-3 col-sm-3 col-xs-6 col-lg-push-9 col-md-push-9">a</div>
+		<div class="gris col-lg-3 col-md-3 col-sm-3 col-xs-6 col-lg-push-3 col-md-push-3">b</div>
+		<div class="gris col-lg-3 col-md-3 col-sm-3 col-xs-6 col-lg-pull-3 col-md-pull-3">c</div>
+		<div class="gris col-lg-3 col-md-3 col-sm-3 col-xs-6 col-lg-pull-9 col-md-pull-9">d</div>
+	</div>
+
+	<div class="row hidden-sm">
+		<div class="cel col-lg-12 col-md-12 hidden-xs">Desktop</div>
+		<div class="cel col-xs-12 hidden-lg hidden-md">Mobile</div>
+	</div>
+
+	<div class="row">
+		<div class="naranja col-lg-3 col-lg-push-6 col-md-3 col-md-push-6 col-sm-6 col-xs-12">:D</div>
+		<div class="naranja col-lg-3 col-lg-pull-3 col-lg-offset-3 col-md-3 col-md-pull-3 col-md-offset-3 col-sm-6 hidden-xs">:&#40;</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">Footer</div>
+	</div>
+
+</body>
+</html>

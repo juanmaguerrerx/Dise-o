@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario HTML5</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Ejercicio – Formulario y tabla
+
+    1- Crea en una página nueva una formulario con los siguientes campos:
+
+        •	Nombre - control de tipo texto obligatorio y con autofoco.
+        •	Correo electrónico -control de tipo email obligatorio.
+        •	URL - de tipo url que muestre la ayuda "URL de tu página web personal".
+        •	Fecha - de tipo date.
+        •	Tiempo - de tipo time.
+        •	Fecha y hora - de tipo datetime.
+        •	Mes - de tipo month.
+        •	Semana - de tipo week.
+        •	Número - de tipo number que limite la entrada a un valor entre -10 y 10.
+        •	Teléfono - de tipo tel.
+        •	Término de búsqueda - de tipo search.
+        •	Color favorito - de tipo color.
+        •	Un botón de envío.
+
+    Requisitos:
+
+        1.	El título de la página:  Formulario HTML5.
+        2.	El método de envío: GET.
+        3.	El destino del envío del formulario debe ser "". -->
+
+    <h1 id="form">Formulario</h1>
+
+    <form action="" method="get">
+        <fieldset>
+            <legend>Datos personales</legend>
+            <p><label for="nombre">Nombre: </label><input type="text" name="nombre" id="nombre" autofocus></p>
+            <p><label for="correo">Correo: </label><input type="email" name="correo" id="correo"></p>
+            <p><label for="telefono">Telefono: </label><input type="tel" name="telefono" id="telefono"></p>
+            <p><label for="color">Color favorito: </label><input type="color" name="colorFav" id="colorFav"></p>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Fecha</legend>
+            <p><label for="fecha">Fecha:</label><input type="date" name="fecha" id="fecha"></p>
+            <p><label for="tiempo">Tiempo: </label><input type="time" name="tiempo" id="tiempo"></p>
+            <p><label for="fechaTiempo">DateTime: </label><input type="datetime-local" name="fechaTiempo"
+                    id="fechaTiempo">
+            </p>
+            <p><label for="mes">Mes: </label><input type="month" name="mes" id="mes"></p>
+            <p><label for="semana">Semana: </label><input type="week" name="semana" id="semana"></p>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Numero</legend>
+            <p><label for="numero">Numero: </label><input type="number" name="numero" id="numero" min="-10" max="10">
+            </p>
+            <p><label for="buscar">Buscar: </label><input type="search" name="buscar" id="buscar"></p>
+            <p><label for="url"></label>URL: <input type="url" name="dir" id="dir" placeholder="URL de tu pagina"></p>
+        </fieldset>
+        <br>
+        <input type="submit" value="Enviar" id="enviar">
+
+    </form>
+    <br><br><br><br><br><br>
+    <h1 id="tabla">Tabla</h1>
+    <table id="tabla">
+        <tr>
+            <th>Categoria</th>
+            <th>Etiquetas</th>
+        </tr>
+        <tr>
+            <td rowspan="5">Formulario</td>
+            <td>form</td>
+        </tr>
+        <tr>
+            <td>button</td>
+        </tr>
+        <tr>
+            <td>input</td>
+        </tr>
+        <tr>
+            <td>select</td>
+        </tr>
+        <tr>
+            <td>textarea</td>
+        </tr>
+
+        <tr>
+            <td rowspan="5">Tabla</td>
+            <td>table</td>
+        </tr>
+        <tr>
+            <td>tr</td>
+        </tr>
+        <tr>
+            <td>th</td>
+        </tr>
+        <tr>
+            <td>td</td>
+        </tr>
+        <tr>
+            <td>caption</td>
+        </tr>
+
+        <tr>
+            <td rowspan="6">Texto</td>
+            <td>b</td>
+        </tr>
+        <tr>
+            <td>em</td>
+        </tr>
+        <tr>
+            <td>i</td>
+        </tr>
+        <tr>
+            <td>strong</td>
+        </tr>
+        <tr>
+            <td>sub</td>
+        </tr>
+        <tr>
+            <td>sup</td>
+        </tr>
+
+
+    </table>
+</body>
+
+</html>

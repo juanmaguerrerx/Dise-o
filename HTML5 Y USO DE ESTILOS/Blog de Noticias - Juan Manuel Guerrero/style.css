@@ -1,0 +1,222 @@
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+
+}
+
+header {
+    color: #fff;
+    background-image: url(./588041c54f31e.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: fit-content;
+    width: 100%;
+}
+
+.textCab {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+    text-align: center;
+    margin: 40vh 10vh 10vh 10vh;
+    padding-bottom: 40vh;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 0.01em solid white;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    margin-left: 3vh;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.pages {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.pages a {
+    padding: 1.3vh;
+    text-decoration: none;
+    color: #fff;
+    margin: 0 15px;
+}
+
+.pages a:hover {
+    text-decoration: none;
+    color: #F9E0B9;
+    margin: 0 15px;
+}
+
+.pages a:active {
+    text-decoration: none;
+    background-color: #c0697a;
+    margin: 0 15px;
+    border-radius: 5px;
+}
+
+i:hover {
+    color: #EA8499;
+}
+
+.social-links {
+    margin-right: 5vh;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: #fff;
+    margin-left: 15px;
+}
+
+
+.cabeza {
+    background-image: url(./588041c54f31e.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    width: 70vh;
+    height: 40vh;
+    position: relative;
+}
+
+.fechatitulo {
+    position: absolute;
+    bottom: 0;
+    font-weight: bold;
+    letter-spacing: 2px;
+    left: 1em;
+}
+
+.fecha {
+    font-size: small;
+}
+
+.cuerpo {
+    width: 70vh;
+    font-size: small;
+    margin-left: 0.5em;
+}
+
+.noticias {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}
+
+.noticia {
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.leermas {
+    background-color: black;
+    color: white;
+    width: 8em;
+    height: 3em;
+    border: none;
+    padding: 1em;
+}
+
+.publi{
+    width: 52vh;
+    height: 30vh;
+    background-image: url(./588041c54f31e.webp);
+    margin-bottom: 1em;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tit{
+    background-color: black;
+    color: white;
+    height: 2em;
+    padding-left: 1em;
+    padding-top: 1em;
+}
+
+@media only screen and (max-width: 1704px) {
+    .noticias{
+        display: flex;
+        flex-direction: column;
+    }
+    .cabeza{
+        width: 100%;
+    }
+    .pub{
+        display: flex;
+        justify-content: center;
+    }
+    .publi{
+        margin-right: 1em;
+        width: 50%;
+    }
+}
+
+/* Puntos de ruptura para tabletas y dispositivos más pequeños */
+@media only screen and (max-width: 1224px) {
+    .navbar{
+        display: flex;
+        flex-direction: column;
+    }
+    .pages{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Puntos de ruptura para dispositivos móviles */
+@media only screen and (max-width: 768px) {
+    .navbar{
+        display: flex;
+        flex-direction: column;
+    }
+    .pages{
+        display: flex;
+        flex-direction: column;
+    }
+    .pub{
+        display: flex;
+        justify-content: center;
+    }
+    .publi{
+        margin-right: 1em;
+        width: 90%;
+    }
+}
+
+/* Puntos de ruptura para dispositivos móviles */
+@media only screen and (max-width: 920px) {
+    .pub{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .pub{
+        display: flex;
+        justify-content: center;
+    }
+    .publi{
+        margin-right: 1em;
+        width: 90%;
+    }
+}
+
+

@@ -1,0 +1,50 @@
+.dropdownmenu ul, .dropdownmenu li {
+	margin: 0;
+	padding: 0;
+    max-width: 100%;
+}
+.dropdownmenu ul {
+	background: gray;
+	list-style: none;
+	width: 100%;
+}
+.dropdownmenu li {
+	float:right; /*Posicionamos el menu a la derecha*/
+	position: relative;
+	width:15%;
+}
+.dropdownmenu a {
+	background: #3f5e6d;
+	color: #FFFFFF;
+	display: block;
+	font: bold 12px/20px sans-serif;
+	padding: 10px 25px;
+	text-align: center;
+	text-decoration: none;
+}
+.dropdownmenu li:hover a {
+	background: #202527;
+}
+#submenu {
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	top: 35px;
+	visibility: hidden; /*Para ocultar el submenu*/
+	z-index: 1;
+}
+li:hover ul#submenu {
+	opacity: 1;
+	top: 40px;	/* adjust this as per top nav padding top & bottom comes */
+	visibility: visible; /*Una vez ponemos el raton encima lo hacemos visible para "desplegarlo" */
+}
+#submenu li {
+	float: none;
+	width: 100%;
+}
+#submenu a:hover {
+	background: #66a9c9;
+}
+#submenu a {
+	background-color:#000000;
+}

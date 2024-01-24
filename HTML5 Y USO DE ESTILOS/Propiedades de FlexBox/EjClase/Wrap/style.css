@@ -1,0 +1,45 @@
+#flex-container{
+    display: flex;
+    flex-wrap: no-wrap;
+  }
+  #flex-container div{
+    width: 200px;
+    height: 150px;
+    color: #FFF;
+    text-align: center;
+    line-height: 150px;
+    margin: 10px;
+    font-size: 20px;
+    font-family: Arial;
+    background-color: #E67E22;
+  }
+  #flex-container1{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #flex-container1 div{
+    width: 200px;
+    height: 150px;
+    color: #FFF;
+    text-align: center;
+    line-height: 150px;
+    margin: 10px;
+    font-size: 20px;
+    font-family: Arial;
+    background-color: #C0392B;
+  }
+  #flex-container2{
+    display: flex;
+    flex-wrap: wrap-reverse;
+  }
+  #flex-container2 div{
+    width: 200px;
+    height: 150px;
+    color: #FFF;
+    text-align: center;
+    line-height: 150px;
+    margin: 10px;
+    font-size: 20px;
+    font-family: Arial;
+    background-color: #3498DB;
+  }

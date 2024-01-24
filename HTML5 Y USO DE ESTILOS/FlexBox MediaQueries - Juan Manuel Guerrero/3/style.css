@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: 1px solid red;
+}
+
+#box1 {
+    background-color: #beff4d;
+}
+
+#box2 {
+    background-color: #3ab302;
+}
+
+#box3 {
+    background-color: #c5fcaf;
+}
+
+.main {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.main section {
+    width: 100%;
+}
+
+.main div { 
+    width: 100%;
+}
+
+
+@media (min-width: 600px) {
+    .main section {
+        width: 75%;
+    }
+
+    #box1 {
+        height: 500px;
+        width: 25%;
+    }
+}
+
+@media (min-width: 800px) {
+    .main {
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    section{
+        border:1px solid blue;
+    }
+}

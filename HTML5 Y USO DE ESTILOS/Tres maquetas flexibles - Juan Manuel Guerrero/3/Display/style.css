@@ -1,0 +1,24 @@
+
+.contenido {
+    border: 1px solid black;
+    display: inline-block;
+    height: fit-content;
+    width: 50vh;
+    margin: 2vh;
+    padding: 1vh;
+    height: fit-content;
+    vertical-align: top;
+}
+
+.contenido img {
+    height: 10vh;
+    width: 10vh;
+}
+
+.contenido:last-child {
+    width: 120vh;
+}
+
+.img {
+    text-align: center;
+}

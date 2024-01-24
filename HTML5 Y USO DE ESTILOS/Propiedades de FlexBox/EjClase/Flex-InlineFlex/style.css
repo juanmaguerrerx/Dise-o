@@ -1,0 +1,19 @@
+.contenedor {
+    border: 1px solid #ccc;
+    background-color: #EEE;
+    padding: 10px;
+ }
+ 
+ .flex-container {
+   display: flex;
+ }
+ 
+ .inline-flex-container {
+   display: inline-flex;
+ }
+ 
+ .item {
+   border: 1px solid #ccc;
+   padding: 10px;
+   margin: 5px;
+ }

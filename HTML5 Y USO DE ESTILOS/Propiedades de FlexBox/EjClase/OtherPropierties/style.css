@@ -1,0 +1,48 @@
+.flex-container {
+    display: flex;
+}
+
+.flex-item {
+    background-color: #EEE;
+    padding: 10px;
+    margin: 10px;
+}
+
+.flex-item-1 {
+    flex-grow: 1;
+    /* Todos los elementos crecen de igual manera */
+}
+
+.flex-container2 {
+    display: flex;
+    width: 500px;
+    /* Ancho total menor que la suma de los flex-basis */
+}
+
+.flex-item2 {
+    flex-basis: 200px;
+}
+
+/* Primer elemento */
+.flex-container2 .flex-item2:first-child {
+    flex-shrink: 0;
+    /* Este elemento no se encogerá */
+}
+
+/* Segundo elemento */
+.flex-container2 .flex-item2:nth-child(2) {
+
+    flex-shrink: 2;
+    /* Este elemento se encogerá el doble que el normal */
+}
+
+/* Tercer elemento */
+.flex-container2 .flex-item2:nth-child(3) {
+    flex-shrink: 1;
+    /* Este elemento se encogerá normalmente */
+}
+
+.flex-item3 {
+    flex-basis: 400px;
+    /* Cada elemento comienza con 400px de ancho */
+}

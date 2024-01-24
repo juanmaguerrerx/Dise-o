@@ -1,0 +1,23 @@
+.breadcrumb {
+    font-family: Arial;
+    padding: .5em;
+}
+
+.breadcrumb a {
+    color: #0095eb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+    color: #006196;
+}
+
+.right {
+    float: right; /*Ponemos uno a la derecha y el otro a la izquierda*/
+}
+
+.left {
+    float: left;
+}

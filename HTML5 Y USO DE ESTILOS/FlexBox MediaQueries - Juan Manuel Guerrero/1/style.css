@@ -1,0 +1,27 @@
+*{
+    border: 1px solid red;
+    box-sizing: border-box;
+}
+
+.cont{
+    border: 1px solid blue;
+    display: flex;
+    flex-flow: row wrap;
+}
+.col1, .col2, .col3{
+    width: 100%;
+}
+
+@media (min-width:600px){
+    .col2,.col3{
+        width: 50%;
+    }
+}
+
+@media (min-width:800px){
+    .cont{
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

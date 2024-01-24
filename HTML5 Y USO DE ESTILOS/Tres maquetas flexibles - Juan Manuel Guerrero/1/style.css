@@ -1,0 +1,44 @@
+*{
+    margin: 0px;
+    overflow: hidden;
+}
+#izquierdo {
+    font-size: 3vh;
+    display: inline-block;
+    background-color: red;
+    height: 100vh;
+    width: 20vh;
+}
+#centro{
+    display: inline-block;
+    height: 100vh;
+    width: 100vh;
+}
+#arriba {
+    font-size: 3vh;
+    display: block;
+    background-color: green;
+    height: 5vh;
+    width:100vh;
+}
+#derecha {
+    display: inline-block;
+    background-color: red;
+    height: 100vh;
+    width: 20vh;
+    font-size: 3vh;
+}
+#medio {
+    font-size: 3vh;
+    display: block;
+    background-color: yellow;
+    height: 90vh;
+    width: 100vh;
+}
+#abajo {
+    font-size: 3vh;
+    display: block;
+    background-color: green;
+    height: 5vh;
+    width: 100vh;
+}

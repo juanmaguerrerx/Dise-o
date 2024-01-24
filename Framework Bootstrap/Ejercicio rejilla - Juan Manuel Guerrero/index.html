@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlace al archivo CSS de Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Rejilla</title>
+    <style>
+        .borde{border: 1px #000 solid; text-align: center; height: 50px;}
+        .color1{background: #eeeeee;}
+        .color2{background: #fcc314;}
+        .color3{background: #94ac3c;}
+        .color4{background: #295ba7;}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="borde color4 col-sm-12">HEADER</div>
+        </div>
+        <div class="row">
+            <div class="borde color1 col-sm-6 col-md-3 hidden-xs-down">IZQUIERDA</div>
+            <div class="borde color2 col-sm-6 col-md-6">CONTENIDO</div>
+            <div class="borde color3 col-sm-12 col-md-3">DERECHA</div>
+        </div>
+        <div class="row">
+            <div class="borde color4 col-sm-12">FOOTER</div>
+        </div>
+    </div>
+
+    <!-- Enlace a los archivos JavaScript de Bootstrap 5 por separado, popper debe ir primero (popper.js y bootstrap.min.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+.primera {
+    background-color: #660066;
+    color: #f8d8a3;
+    padding: 15px;
+    width: 15%;
+    text-align: center;
+    z-index: 1;
+  }
+  .segunda {
+    position: absolute;
+    background-color: #006666;
+    color: #f8d8a3;
+    padding: 15px;
+    width: 15%;
+    text-align: right;
+    margin: 0px 0px 0px 15%;
+    z-index: 2;
+  }
+  .tercera {
+    position: absolute;
+    background-color: #003333;
+    color: #f8d8a3;
+    padding: 15px;
+    width: 15%;
+    margin: 1% 0% 0% 1%;
+  }
+  .cuarto {
+    background-color: #009966;
+    color: #f8d8a3;
+    padding: 15px;
+    width: 15%;
+    margin-top: 6.5%;
+  }
+  .quinto {
+    background-color: #666666;
+    color: #f8d8a3;
+    padding: 15px;
+    width: 40%;
+    text-align: right;
+    margin-left: 36%;
+  }
+  .sexto {
+    background-color: #111111;
+    color: #f8d8a3;
+    padding: 15px;
+    width: 50%;
+    text-align: right;
+  }
+  .septimo {
+    position: absolute;
+    background-color: #00aaaa;
+    color: #f8d8a3;
+    padding: 15px;
+    width: 15%;
+    height: 25px;
+    top: 0;
+    margin-top: 1%;
+    margin-left: 70%;
+    overflow-y: scroll;
+  }
+
+  .sticky {
+    padding: 15px;
+    background-color: #e1f4fc;
+  }

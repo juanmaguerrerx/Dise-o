@@ -1,0 +1,23 @@
+
+
+$font-family-sans-serif:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+$primary: rgb(197, 88, 88);
+$secondary: rgb(110, 110, 201);
+$danger:rgb(203, 184, 89);
+$warning:rgb(156, 80, 181);
+$success:rgb(117, 228, 198);
+
+@media (min-width:700px){
+    body{
+        width:1200px;
+    }
+}
+
+.fondo-quote{
+    background-image:url('../../images/800px-Cquote1_black.svg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';

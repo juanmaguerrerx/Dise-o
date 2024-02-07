@@ -5,9 +5,15 @@
   }
 }
 .fondo-quote {
-  background-image: url("../../images/800px-Cquote1_black.svg.png");
+  background-image: url("../../images/VisualEditor_-_Icon_-_Block-quote_-_white.svg.png");
   background-size: contain;
+  background-position: 5px 20px;
   background-repeat: no-repeat;
+}
+
+.box-shadow {
+  background: #333;
+  box-shadow: 5px 5px 5px #333;
 }
 
 /*!

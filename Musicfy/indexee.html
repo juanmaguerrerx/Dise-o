@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicFy</title>
+    <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" href="./images/spotify-logo.webp" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            padding-top: 56px;
+            /* Altura del navbar superior */
+            padding-bottom: 56px;
+            /* Altura del navbar inferior */
+            background-color: #494949;
+        }
+
+        .nav {
+            background-color: #1b1b1b !important;
+        }
+
+        .navbar-top {
+            background-color: #1b1b1b !important;
+        }
+
+
+        .aside {
+            position: fixed;
+            top: 56px;
+            bottom: 56px;
+            left: 0;
+            width: 250px;
+            background-color: #1b1b1b;
+            overflow-y: auto;
+        }
+
+        .list>* {
+            margin-top: 50px;
+            background-color: #1b1b1b;
+            color: #8f8f8f;
+            border: none;
+            text-align: center;
+        }
+
+        .listh:hover {
+            background-color: #1b1b1b;
+            color: white;
+        }
+
+        .aside>* {
+            background-color: #1b1b1b;
+        }
+
+        .content {
+            margin-left: 250px;
+            /* Ancho del aside */
+            margin-right: 0;
+            padding: 20px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 20px;
+            opacity: 50%;
+        }
+
+        .nombre {
+            color: rgb(200, 200, 200);
+        }
+
+        .rep {
+            padding-left: 25%;
+        }
+
+        .navbar-container {
+            border-radius: 10px;
+            /* Redondea los bordes del contenedor */
+            overflow: hidden;
+            /* Oculta cualquier contenido que sobresalga del contenedor */
+        }
+
+        .title {
+            letter-spacing: 5px;
+            font-weight: 300;
+        }
+        .contenido {
+            text-align: center;
+            background-color: #1b1b1b;
+            border-radius: 20px;
+            padding: 5px;
+            padding-bottom: 30px;
+            margin: 5px;
+
+        }
+
+        
+
+        .artista-img {
+            border-radius: 20%;
+            width: 100px;
+            height: 100px;
+            transition: transform 0.3s ease;
+            /* Transición suave */
+        }
+
+        .artista:hover {
+            transform: scale(1.1);
+            /* Escala la imagen al 110% cuando el mouse pasa por encima */
+        }
+
+        .artista-info {
+            opacity: 0;
+            /* Inicialmente oculta el texto */
+            transition: opacity 0.3s ease;
+            /* Transición suave */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: #1b1b1b;
+        }
+
+        .artista:hover .artista-info {
+            opacity: 1;
+            /* Muestra el texto cuando el mouse pasa por encima */
+        }
+
+        
+
+        @media (max-width: 768px) {
+            .aside {
+                width: 100%;
+                position: static;
+                border-right: none;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar container">
+        <!-- Navbar superior -->
+        <div class="nav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-top">
+                <img src="./images/Spotify-icon.png" alt="Logo" class="logo">
+                <h2 class="text-center nombre">Musicfy</h2>
+            </nav>
+        </div>
+
+        <!-- Navbar inferior -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-bottom nav ">
+            <div class="container rep">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" id="previousTrack" href="#"><i
+                                class="fas fa-step-backward fa-lg text-white mr-5"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="togglePlay" href="#"><i
+                                class="fas fa-play fa-lg text-white mr-5"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nextTrack" href="#"><i
+                                class="fas fa-step-forward fa-lg text-white mr-5"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="toggleMuteButton" href="#"><i
+                                class="fas fa-volume-up fa-lg text-white mr-5"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <!-- Aside (menú lateral) -->
+        <aside class="aside">
+            <div class="list-group list">
+                <a href="#" class="list-group-item list-group-item-action listh">Playlist</a>
+                <a href="#artistas" class="list-group-item list-group-item-action listh">Artistas</a>
+                <a href="#" class="list-group-item list-group-item-action listh">Albumes</a>
+                <a href="#" class="list-group-item list-group-item-action listh">Canciones</a>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Contenido dinámico -->
+    <div class="content">
+        <div id="playlist">
+            <div class="contenido">
+                <h1 class="text-center text-white title">PLAYLISTS</h1>
+
+            </div>
+        </div>
+        <div class="contenido">
+            <div id="artistas">
+                <h1 class="text-center text-white title">ARTISTAS</h1>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="artista">
+                            <img src="./images/duki-spotify.jpg" class="artista-img" alt="Duki">
+                            <div class="artista-info">Duki</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="artista">
+                            <img src="./images/quevedo-spotify.jpg" class="artista-img" alt="Quevedo">
+                            <div class="artista-info">Quevedo</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="artista">
+                            <img src="./images/plex-perfil.jpg" class="artista-img" alt="Plex">
+                            <div class="artista-info">Plex</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="artista">
+                            <img src="./images/saiko-spotify.jpg" class="artista-img" alt="Saiko">
+                            <div class="artista-info">Saiko</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="albumes">
+        <h1 class="text-center text-white title">ALBUMES</h1>
+    </div>
+    <div id="canciones">
+        <h1 class="text-center text-white title">CANCIONES</h1>
+    </div>
+
+    <audio id="audioPlayer">
+        <source src="./Audios/audios/cancion.mp3" type="audio/mp3">
+        <source src="./Audios/audios/cancion2.mp3" type="audio/mp3">
+    </audio>
+
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Script para controlar el reproductor de audio -->
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const togglePlayButton = document.getElementById('togglePlay');
+        const previousTrackButton = document.getElementById('previousTrack');
+        const nextTrackButton = document.getElementById('nextTrack');
+        const toggleMuteButton = document.getElementById('toggleMuteButton');
+        let currentTrackIndex = 0;
+
+        const tracks = [
+            "./Audios/audios/cancion.mp3",
+            "./Audios/audios/cancion2.mp3"
+        ];
+
+        togglePlayButton.addEventListener('click', function () {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                togglePlayButton.innerHTML = '<i class="fas fa-pause text-white mr-5"></i>';
+            } else {
+                audioPlayer.pause();
+                togglePlayButton.innerHTML = '<i class="fas fa-play mr-5 text-white"></i>';
+            }
+        });
+
+        previousTrackButton.addEventListener('click', function () {
+            console.log("next");
+            currentTrackIndex = (currentTrackIndex === 0) ? tracks.length - 1 : currentTrackIndex - 1;
+            audioPlayer.src = tracks[currentTrackIndex];
+            audioPlayer.play();
+            togglePlayButton.innerHTML = '<i class="fas fa-pause text-white mr-5"></i>';
+
+        });
+
+        nextTrackButton.addEventListener('click', function () {
+            currentTrackIndex = (currentTrackIndex === tracks.length - 1) ? 0 : currentTrackIndex + 1;
+            audioPlayer.src = tracks[currentTrackIndex];
+            audioPlayer.play();
+            togglePlayButton.innerHTML = '<i class="fas fa-pause text-white mr-5"></i>';
+
+        });
+
+        toggleMuteButton.addEventListener('click', function () {
+            audioPlayer.muted = !audioPlayer.muted;
+            if (audioPlayer.muted) {
+                toggleMuteButton.innerHTML = '<i class="fas fa-volume-mute fa-lg text-white mr-5"></i>';
+            } else {
+                toggleMuteButton.innerHTML = '<i class="fas fa-volume-up fa-lg text-white mr-5"></i>';
+            }
+        });
+
+    </script>
+</body>
+
+</html>

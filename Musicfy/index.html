@@ -404,8 +404,6 @@
                         class="bi bi-person mr-2"></i><span class="d-none d-md-inline">Artistas</span></a>
                 <a href="#albumes" class="list-group-item list-group-item-action listh"><i
                         class="bi bi-collection mr-2"></i><span class="d-none d-md-inline">Álbumes</span></a>
-                <a href="#canciones" class="list-group-item list-group-item-action listh"><i
-                        class="bi bi-file-earmark-music mr-2"></i><span class="d-none d-md-inline">Canciones</span></a>
             </div>
         </aside>
     </div>
@@ -627,20 +625,15 @@
         });
 
         previousTrackButton.addEventListener('click', function () {
-            console.log("next");
+            showAd();
             currentTrackIndex = (currentTrackIndex === 0) ? tracks.length - 1 : currentTrackIndex - 1;
             audioPlayer.src = tracks[currentTrackIndex];
-            audioPlayer.play();
-            togglePlayButton.innerHTML = '<i class="fas fa-pause text-white mr-5"></i>';
-
         });
 
         nextTrackButton.addEventListener('click', function () {
+            showAd();
             currentTrackIndex = (currentTrackIndex === tracks.length - 1) ? 0 : currentTrackIndex + 1;
-            audioPlayer.src = tracks[currentTrackIndex];
-            audioPlayer.play();
-            togglePlayButton.innerHTML = '<i class="fas fa-pause text-white mr-5"></i>';
-
+            audioPlayer.src = tracks[currentTrackIndex];            
         });
 
         toggleMuteButton.addEventListener('click', function () {
@@ -652,6 +645,10 @@
             }
         });
 
+        // Mostrar el anuncio cuando se cambia de canción o cuando se termina una canción
+        audioPlayer.addEventListener("ended", showAd);
+
+
 
         // Función para cerrar el anuncio
         function closeAd() {
@@ -660,30 +657,17 @@
             var adVideo = document.getElementById("ad-video");
             adVideo.pause();
             adVideo.currentTime = 0;
-            setInterval(showAd, 30000);
+            audioPlayer.play();
+            togglePlayButton.innerHTML = '<i class="fas fa-pause text-white mr-5"></i>';
         }
 
         function showAd() {
+            audioPlayer.pause();
             var adContainer = document.getElementById("ad-container");
             adContainer.style.display = "block";
             var adVideo = document.getElementById("ad-video");
             adVideo.play(); // Iniciar reproducción del video
-
-            // Pausar la reproducción del reproductor de audio
-            audioPlayer.pause();
-
-            //setTimeout(function () {
-            //  adContainer.style.display = "none";
-            //adVideo.stop();
-            //            }, 20000); // 20 segundos
         }
-
-        // Mostrar el anuncio al cargar la página y luego cada 20 segundos
-        window.onload = function () {
-            var adVideo = document.getElementById("ad-video");
-            showAd();
-            adVideo.play()
-        };
 
         // Cerrar el anuncio cuando el video termine
         var video = document.getElementById("ad-video");

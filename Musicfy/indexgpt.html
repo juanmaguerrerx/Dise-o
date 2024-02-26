@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicFy</title>
+    <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" href="./images/spotify-logo.webp" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            padding-top: 56px;
+            /* Altura del navbar superior */
+            padding-bottom: 56px;
+            /* Altura del navbar inferior */
+            background-color: #292929;
+        }
+
+        .nav {
+            background-color: #1b1b1b !important;
+        }
+
+        @keyframes animacionTexto {
+            0% {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+
+            50% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+        }
+
+        .nombre {
+            color: rgb(200, 200, 200);
+            margin-right: 100px;
+            /* Ajusta el margen según sea necesario */
+            position: relative;
+            /* Necesario para que z-index funcione */
+            z-index: 1;
+            /* Asegura que el texto del nombre esté sobre el texto animado */
+        }
+
+        .navbar-top {
+            background-color: #1b1b1b !important;
+            overflow: hidden;
+            /* Asegura que el texto animado no se desborde */
+        }
+
+        .texto-aleatorio {
+            margin-left: 20px;
+            animation: animacionTexto 25s infinite;
+            /* Ajusta la duración de la animación según sea necesario */
+            color: white;
+        }
+
+        .aside {
+            display: none;
+            /* Oculta el aside en pantallas pequeñas */
+        }
+
+        .list>* {
+            margin-top: 50px;
+            background-color: #1b1b1b;
+            color: #8f8f8f;
+            border: none;
+            text-align: center;
+        }
+
+        .listh:hover {
+            background-color: #1b1b1b;
+            color: white;
+            font-size: larger;
+        }
+
+        .listh {
+            font-size: large;
+        }
+
+        .content {
+            margin-left: 0;
+            margin-right: 0;
+            padding: 20px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 20px;
+            opacity: 50%;
+        }
+
+        .nombre {
+            color: rgb(200, 200, 200);
+        }
+
+        .rep {
+            padding-left: 500px;
+        }
+
+        .navbar-container {
+            border-radius: 10px;
+            /* Redondea los bordes del contenedor */
+            overflow: hidden;
+            /* Oculta cualquier contenido que sobresalga del contenedor */
+        }
+
+        .title {
+            letter-spacing: 5px;
+            font-weight: 300;
+        }
+
+        .contenido {
+            text-align: center;
+            background-color: #1b1b1b;
+            border-radius: 20px;
+            padding: 5px;
+            padding-bottom: 30px;
+            margin: 5px;
+        }
+
+        .artista-img {
+            border-radius: 20%;
+            width: 100px;
+            height: 100px;
+            transition: transform 0.3s ease;
+            /* Transición suave */
+        }
+
+        .artista:hover .artista-img {
+            transform: scale(1.1);
+            filter: blur(3px);
+            /* Escala la imagen al 110% cuando el mouse pasa por encima */
+        }
+
+        .artista-info {
+            opacity: 0;
+            /* Inicialmente oculta el texto */
+            transition: opacity 0.3s ease;
+            /* Transición suave */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            /* Agrega sombra al texto */
+        }
+
+        .artista:hover .artista-info {
+            opacity: 1;
+            /* Muestra el texto cuando el mouse pasa por encima */
+        }
+
+        .playlist-card {
+            background-color: #1b1b1b;
+            border-radius: 20px;
+            margin: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Transición suave */
+        }
+
+        .playlist-card:hover {
+            transform: scale(1.05);
+            /* Escalado al pasar el ratón */
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            /* Sombra más pronunciada */
+        }
+
+        .playlist-img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #8f8f8f;
+            /* Borde inferior */
+        }
+
+        .playlist-info {
+            padding: 10px;
+        }
+
+        .playlist-title {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .ml {
+            margin-left: 170px;
+            margin-right: 170px;
+        }
+
+        .playlist-author {
+            color: #8f8f8f;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar container">
+        <!-- Navbar superior -->
+        <div class="nav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-top">
+                <img src="./images/Spotify-icon.png" alt="Logo" class="logo">
+                <h2 class="text-center nombre">Musicfy</h2>
+                <p class="texto-aleatorio">¿Has escuchado la nueva canción de Quevedo? Ya puedes escucharla en Musicfy
+                    en exclusiva.</p>
+                <!-- Botón para desplegar el menú lateral -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Navbar inferior -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-bottom nav">
+            <div class="container rep">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" id="previousTrack" href="#"><i
+                                class="fas fa-step-backward fa-lg text-white mr-5"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="togglePlay" href="#"><i
+                                class="fas fa-play fa-lg text-white mr-5"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nextTrack" href="#"><i
+                                class="fas fa-step-forward fa-lg text-white mr-5"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="toggleMuteButton" href="#"><i
+                                class="fas fa-volume-up fa-lg text-white mr-5"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Contenido dinámico -->
+    <div class="content">
+        <!-- Menú lateral desplegable -->
+        <div class="collapse" id="navbarNav">
+            <aside class="navbar-lateral">
+                <div class="list-group list">
+                    <a href="#playlist" class="list-group-item list-group-item-action listh"><i
+                            class="bi bi-music-note-list mr-2"></i><span class="d-none d-md-inline">Playlist</span></a>
+                    <a href="#artistas" class="list-group-item list-group-item-action listh"><i
+                            class="bi bi-person mr-2"></i><span class="d-none d-md-inline">Artistas</span></a>
+                    <a href="#albumes" class="list-group-item list-group-item-action listh"><i
+                            class="bi bi-collection mr-2"></i><span class="d-none d-md-inline">Álbumes</span></a>
+                    <a href="#canciones" class="list-group-item list-group-item-action listh"><i
+                            class="bi bi-file-earmark-music mr-2"></i><span
+                            class="d-none d-md-inline">Canciones</span></a>
+                </div>
+            </aside>
+        </div>
+        <div class="content">
+            <div id="playlist">
+                <div class="contenido">
+                    <h1 class="text-center text-white title">PLAYLISTS</h1>
+                    <div class="row mt-5">
+                        <div class="col-md-3">
+                            <div class="playlist-card">
+                                <img src="./images/top50-viralglb-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                                <div class="playlist-info">
+                                    <h3 class="playlist-title">Most Viral</h3>
+                                    <p class="playlist-author">Global</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="playlist-card">
+                                <img src="./images/top50ar-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                                <div class="playlist-info">
+                                    <h3 class="playlist-title">Top 50</h3>
+                                    <p class="playlist-author">Argentina</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="playlist-card">
+                                <img src="./images/top50glb-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                                <div class="playlist-info">
+                                    <h3 class="playlist-title">Top 50</h3>
+                                    <p class="playlist-author">Global</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="playlist-card">
+                                <img src="./images/top50sp-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                                <div class="playlist-info">
+                                    <h3 class="playlist-title">Top 50</h3>
+                                    <p class="playlist-author">España</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="artistas">
+                <div class="contenido mt-5">
+
+                    <h1 class="text-center text-white title">ARTISTAS</h1>
+                    <div class="row mt-5">
+                        <div class="col-md-3">
+                            <div class="artista">
+                                <img src="./images/duki-spotify.jpg" class="artista-img" alt="Duki">
+                                <div class="artista-info">Duki</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="artista">
+                                <img src="./images/quevedo-spotify.jpg" class="artista-img" alt="Quevedo">
+                                <div class="artista-info">Quevedo</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="artista">
+                                <img src="./images/plex-perfil.jpg" class="artista-img" alt="Plex">
+                                <div class="artista-info">Plex</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="artista">
+                                <img src="./images/saiko-spotify.jpg" class="artista-img" alt="Saiko">
+                                <div class="artista-info">Saiko</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-md-6">
+                            <div class="artista">
+                                <img src="./images/trueno-spotify.jpg" class="artista-img" alt="Trueno">
+                                <div class="artista-info">Trueno</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="artista">
+                                <img src="./images/spotify-logo.webp" class="artista-img" alt="Quevedo">
+                                <div class="artista-info">Guess</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contenido mt-5">
+                <div id="albumes">
+                    <h1 class="text-center text-white title">ALBUMES</h1>
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <div class="playlist-card">
+                                <img src="./images/atrevido-album-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                                <div class="playlist-info">
+                                    <h3 class="playlist-title">Atrevido</h3>
+                                    <p class="playlist-author">Trueno</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="playlist-card">
+                                <img src="./images/badbo-disco-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                                <div class="playlist-info">
+                                    <h3 class="playlist-title">Nadie Sabe</h3>
+                                    <p class="playlist-author">Bad Bunny</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="playlist-card">
+                                <img src="./images/mora-disco-2-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                                <div class="playlist-info">
+                                    <h3 class="playlist-title">Microdosis</h3>
+                                    <p class="playlist-author">Mora</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <div class="playlist-card">
+                                <img src="./images/jhayco-album-min.png" alt="Nombre del Álbum" class="playlist-img">
+                                <div class="playlist-info">
+                                    <h3 class="playlist-title">Famouz</h3>
+                                    <p class="playlist-author">JhayCo</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="playlist-card">
+                                <img src="./images/mora-disco-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                                <div class="playlist-info">
+                                    <h3 class="playlist-title">Estrella</h3>
+                                    <p class="playlist-author">Mora</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="playlist-card">
+                                <img src="./images/trueno-spotify-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                                <div class="playlist-info">
+                                    <h3 class="playlist-title">Bien o Mal</h3>
+                                    <p class="playlist-author">Trueno</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="canciones">
+                <div class="contenido mt-5">
+                    <h1 class="text-center text-white title">CANCIONES</h1>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Script para controlar el reproductor de audio -->
+    <script>
+        // Script para controlar el reproductor de audio (se mantiene igual)
+    </script>
+</body>
+
+</html>

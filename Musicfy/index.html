@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicFy</title>
+    <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" href="./images/spotify-logo.webp" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            padding-top: 56px;
+            /* Altura del navbar superior */
+            padding-bottom: 56px;
+            /* Altura del navbar inferior */
+            background-color: #292929;
+        }
+
+        .nav {
+            background-color: #1b1b1b !important;
+        }
+
+        @keyframes animacionTexto {
+            0% {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+
+            50% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+        }
+
+        .nombre {
+            color: rgb(200, 200, 200);
+            margin-right: 100px;
+            /* Ajusta el margen según sea necesario */
+            position: relative;
+            /* Necesario para que z-index funcione */
+            z-index: 1;
+            /* Asegura que el texto del nombre esté sobre el texto animado */
+        }
+
+        .navbar-top {
+            background-color: #1b1b1b !important;
+            overflow: hidden;
+            /* Asegura que el texto animado no se desborde */
+        }
+
+        .texto-aleatorio {
+            margin-left: 20px;
+            animation: animacionTexto 25s infinite;
+            /* Ajusta la duración de la animación según sea necesario */
+            color: white;
+        }
+
+
+        .aside {
+            position: fixed;
+            top: 56px;
+            bottom: 56px;
+            left: 0;
+            width: 250px;
+            background-color: #1b1b1b;
+            overflow-y: auto;
+        }
+
+        .list>* {
+            margin-top: 50px;
+            background-color: #1b1b1b;
+            color: #8f8f8f;
+            border: none;
+            text-align: center;
+        }
+
+        .listh:hover {
+            background-color: #1b1b1b;
+            color: white;
+            font-size: larger;
+        }
+
+        .listh {
+            font-size: large;
+        }
+
+        .aside>* {
+            background-color: #1b1b1b;
+        }
+
+        .content {
+            margin-left: 250px;
+            /* Ancho del aside */
+            margin-right: 0;
+            padding: 20px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 20px;
+            opacity: 50%;
+        }
+
+        .nombre {
+            color: rgb(200, 200, 200);
+        }
+
+        .rep {
+            padding-left: 500px;
+            margin: 0px auto;
+        }
+
+        .navbar-container {
+            border-radius: 10px;
+            /* Redondea los bordes del contenedor */
+            overflow: hidden;
+            /* Oculta cualquier contenido que sobresalga del contenedor */
+        }
+
+        .title {
+            letter-spacing: 5px;
+            font-weight: 300;
+        }
+
+        .contenido {
+            text-align: center;
+            background-color: #1b1b1b;
+            border-radius: 20px;
+            padding: 5px;
+            padding-bottom: 30px;
+            margin: 5px;
+
+        }
+
+
+
+        .artista-img {
+            border-radius: 20%;
+            width: 100px;
+            height: 100px;
+            transition: transform 0.3s ease;
+            /* Transición suave */
+        }
+
+        .artista:hover .artista-img {
+            transform: scale(1.1);
+            filter: blur(3px);
+            /* Escala la imagen al 110% cuando el mouse pasa por encima */
+        }
+
+        .artista-info {
+            opacity: 0;
+            /* Inicialmente oculta el texto */
+            transition: opacity 0.3s ease;
+            /* Transición suave */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            /* Agrega sombra al texto */
+        }
+
+        .artista:hover .artista-info {
+            opacity: 1;
+            /* Muestra el texto cuando el mouse pasa por encima */
+        }
+
+        .playlist-card {
+            background-color: #1b1b1b;
+            border-radius: 20px;
+            margin: 20px;
+            overflow: hidden;
+            /*            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); Sombra suave */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Transición suave */
+        }
+
+        .playlist-card:hover {
+            transform: scale(1.05);
+            /* Escalado al pasar el ratón */
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            /* Sombra más pronunciada */
+        }
+
+        .playlist-img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #8f8f8f;
+            /* Borde inferior */
+        }
+
+        .playlist-info {
+            padding: 10px;
+        }
+
+        .playlist-title {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .ml {
+            margin-left: 170px;
+            margin-right: 170px;
+        }
+
+        .playlist-author {
+            color: #8f8f8f;
+            font-size: 14px;
+        }
+
+        .down {
+            margin: 0px auto;
+        }
+
+        .down>li>a {
+            background-color: #1b1b1b;
+            color: #8f8f8f;
+            border: none;
+            text-align: center;
+            margin-left: 5px;
+            font-size: xx-large;
+        }
+
+        /* Estilo para el contenedor del video */
+        .video-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 10px;
+            display: none;
+
+            /* Ocultar por defecto */
+        }
+
+        /* Estilo para el video */
+        video {
+            position: absolute;
+            width: 100%;
+            top: 10%;
+            height: 80%;
+            border-radius: 5px;
+        }
+
+        /* Estilo para el botón de cerrar */
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 20px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            z-index: 10000;
+        }
+
+
+        @media (max-width:1000px) {
+            .rep {
+                height: 40px;
+                margin: 0px auto;
+                text-align: center;
+            }
+
+            .rep>* {
+                margin: 0px auto;
+                font-size: large;
+            }
+
+        }
+
+        @media (max-width:768px) {
+            .nombre {
+                margin-right: 0;
+            }
+
+
+
+            .texto-aleatorio {
+                display: none;
+            }
+
+            .rep {
+                height: 100px;
+            }
+
+            .rep>* {
+                margin: 0px auto;
+                font-size: large;
+            }
+
+            .content {
+                margin-left: 0px;
+                padding: 0px;
+                background-color: none;
+            }
+
+            .playlist-img {
+                width: 300px;
+                height: 300px;
+            }
+
+            .list>* {
+                margin-top: 50px;
+                background-color: #1b1b1b;
+                color: #8f8f8f;
+                border: none;
+                text-align: center;
+            }
+
+            .listh:hover {
+                background-color: #1b1b1b;
+                color: white;
+                font-size: larger;
+            }
+
+            .listh {
+                font-size: large;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar container">
+        <!-- Navbar superior -->
+        <div class="nav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-top">
+                <img src="./images/Spotify-icon.png" alt="Logo" class="logo">
+                <h2 class="text-center nombre">Musicfy</h2>
+                <p class="texto-aleatorio">¿Has escuchado la nueva canción de Quevedo? Ya puedes escucharla en Musicfy
+                    en exclusiva.</p>
+            </nav>
+        </div>
+
+        <!-- Navbar inferior -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-bottom nav">
+            <div class="container rep">
+                <ul class="navbar-nav mr-auto flex-row">
+                    <li class="nav-item">
+                        <a class="nav-link" id="previousTrack" href="#"><i
+                                class="fas fa-step-backward fa-lg text-white mr-5"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="togglePlay" href="#"><i
+                                class="fas fa-play fa-lg text-white mr-5"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nextTrack" href="#"><i
+                                class="fas fa-step-forward fa-lg text-white mr-5"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="toggleMuteButton" href="#"><i
+                                class="fas fa-volume-up fa-lg text-white mr-5"></i></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-auto flex-row down">
+                    <li class="nav-item d-md-none d-inline ll"><a href="#playlist"
+                            class="list-group-item list-group-item-action listh"><i
+                                class="bi bi-music-note-list mr-2"></i></a></li>
+                    <li class="nav-item d-md-none d-inline"><a href="#artistas"
+                            class="list-group-item list-group-item-action listh"><i class="bi bi-person mr-2"></i></a>
+                    </li>
+                    <li class="nav-item d-md-none d-inline"><a href="#albumes"
+                            class="list-group-item list-group-item-action listh"><i
+                                class="bi bi-collection mr-2"></i></a>
+                    </li>
+                    <li class="nav-item d-md-none d-inline"><a href="#canciones"
+                            class="list-group-item list-group-item-action listh"><i
+                                class="bi bi-file-earmark-music mr-2"></i></a></li>
+                </ul>
+
+            </div>
+        </nav>
+
+
+        <!-- Aside (menú lateral) -->
+        <aside class="aside navbar-lateral d-none d-md-inline">
+            <div class="list-group list">
+                <a href="#playlist" class="list-group-item list-group-item-action listh"><i
+                        class="bi bi-music-note-list mr-2"></i><span class="d-none d-md-inline">Playlist</span></a>
+                <a href="#artistas" class="list-group-item list-group-item-action listh"><i
+                        class="bi bi-person mr-2"></i><span class="d-none d-md-inline">Artistas</span></a>
+                <a href="#albumes" class="list-group-item list-group-item-action listh"><i
+                        class="bi bi-collection mr-2"></i><span class="d-none d-md-inline">Álbumes</span></a>
+                <a href="#canciones" class="list-group-item list-group-item-action listh"><i
+                        class="bi bi-file-earmark-music mr-2"></i><span class="d-none d-md-inline">Canciones</span></a>
+            </div>
+        </aside>
+    </div>
+
+    <!-- ANUNCIO -->
+    <div class="video-container" id="ad-container">
+        <span class="close-btn" onclick="closeAd()">X</span>
+        <video autoplay id="ad-video">
+            <source src="./Videos/videos/anuncio-joaquin.mp4" type="video/mp4">
+            <source src="./Videos/videos/anuncio-avi.mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+    </div>
+    <!-- FIN ANUNCIO -->
+
+    <!-- Contenido dinámico -->
+    <div class="content">
+        <div id="playlist">
+            <div class="contenido">
+                <h1 class="text-center text-white title">PLAYLISTS</h1>
+                <div class="row mt-5">
+                    <div class="col-md-3">
+                        <div class="playlist-card">
+                            <img src="./images/top50-viralglb-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                            <div class="playlist-info">
+                                <h3 class="playlist-title">Most Viral</h3>
+                                <p class="playlist-author">Global</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="playlist-card">
+                            <img src="./images/top50ar-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                            <div class="playlist-info">
+                                <h3 class="playlist-title">Top 50</h3>
+                                <p class="playlist-author">Argentina</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <div class="playlist-card">
+                            <img src="./images/top50glb-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                            <div class="playlist-info">
+                                <h3 class="playlist-title">Top 50</h3>
+                                <p class="playlist-author">Global</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="playlist-card">
+                            <img src="./images/top50sp-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                            <div class="playlist-info">
+                                <h3 class="playlist-title">Top 50</h3>
+                                <p class="playlist-author">España</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="artistas">
+            <div class="contenido mt-5">
+
+                <h1 class="text-center text-white title">ARTISTAS</h1>
+                <div class="row mt-5">
+                    <div class="col-md-3">
+                        <div class="artista">
+                            <img src="./images/duki-spotify.jpg" class="artista-img" alt="Duki">
+                            <div class="artista-info">Duki</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="artista">
+                            <img src="./images/quevedo-spotify.jpg" class="artista-img" alt="Quevedo">
+                            <div class="artista-info">Quevedo</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="artista">
+                            <img src="./images/plex-perfil.jpg" class="artista-img" alt="Plex">
+                            <div class="artista-info">Plex</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="artista">
+                            <img src="./images/saiko-spotify.jpg" class="artista-img" alt="Saiko">
+                            <div class="artista-info">Saiko</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="artista">
+                            <img src="./images/trueno-spotify.jpg" class="artista-img" alt="Trueno">
+                            <div class="artista-info">Trueno</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="artista">
+                            <img src="./images/spotify-logo.webp" class="artista-img" alt="Quevedo">
+                            <div class="artista-info">Guess</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contenido mt-5">
+            <div id="albumes">
+                <h1 class="text-center text-white title">ALBUMES</h1>
+                <div class="row mt-5">
+                    <div class="col-md-4">
+                        <div class="playlist-card">
+                            <img src="./images/atrevido-album-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                            <div class="playlist-info">
+                                <h3 class="playlist-title">Atrevido</h3>
+                                <p class="playlist-author">Trueno</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="playlist-card">
+                            <img src="./images/badbo-disco-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                            <div class="playlist-info">
+                                <h3 class="playlist-title">Nadie Sabe</h3>
+                                <p class="playlist-author">Bad Bunny</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="playlist-card">
+                            <img src="./images/mora-disco-2-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                            <div class="playlist-info">
+                                <h3 class="playlist-title">Microdosis</h3>
+                                <p class="playlist-author">Mora</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-4">
+                        <div class="playlist-card">
+                            <img src="./images/jhayco-album-min.png" alt="Nombre del Álbum" class="playlist-img">
+                            <div class="playlist-info">
+                                <h3 class="playlist-title">Famouz</h3>
+                                <p class="playlist-author">JhayCo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="playlist-card">
+                            <img src="./images/mora-disco-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                            <div class="playlist-info">
+                                <h3 class="playlist-title">Estrella</h3>
+                                <p class="playlist-author">Mora</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="playlist-card">
+                            <img src="./images/trueno-spotify-min.jpg" alt="Nombre del Álbum" class="playlist-img">
+                            <div class="playlist-info">
+                                <h3 class="playlist-title">Bien o Mal</h3>
+                                <p class="playlist-author">Trueno</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="canciones">
+            <div class="contenido mt-5">
+                <h1 class="text-center text-white title">CANCIONES</h1>
+                Aquí agregamos el canvas para los efectos visuales
+                
+            </div>
+        </div> -->
+        <canvas id="visualizer"
+            style="position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></canvas>
+
+    </div>
+    <audio id="audioPlayer">
+        <source src="./Audios/audios/cancion.mp3" type="audio/mp3">
+        <source src="./Audios/audios/cancion2.mp3" type="audio/mp3">
+    </audio>
+
+
+
+
+
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Script para controlar el reproductor de audio -->
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const togglePlayButton = document.getElementById('togglePlay');
+        const previousTrackButton = document.getElementById('previousTrack');
+        const nextTrackButton = document.getElementById('nextTrack');
+        const toggleMuteButton = document.getElementById('toggleMuteButton');
+        let currentTrackIndex = 0;
+
+        const tracks = [
+            "./Audios/audios/cancion.mp3",
+            "./Audios/audios/cancion2.mp3"
+        ];
+
+        togglePlayButton.addEventListener('click', function () {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                togglePlayButton.innerHTML = '<i class="fas fa-pause text-white mr-5"></i>';
+            } else {
+                audioPlayer.pause();
+                togglePlayButton.innerHTML = '<i class="fas fa-play mr-5 text-white"></i>';
+            }
+        });
+
+        previousTrackButton.addEventListener('click', function () {
+            console.log("next");
+            currentTrackIndex = (currentTrackIndex === 0) ? tracks.length - 1 : currentTrackIndex - 1;
+            audioPlayer.src = tracks[currentTrackIndex];
+            audioPlayer.play();
+            togglePlayButton.innerHTML = '<i class="fas fa-pause text-white mr-5"></i>';
+
+        });
+
+        nextTrackButton.addEventListener('click', function () {
+            currentTrackIndex = (currentTrackIndex === tracks.length - 1) ? 0 : currentTrackIndex + 1;
+            audioPlayer.src = tracks[currentTrackIndex];
+            audioPlayer.play();
+            togglePlayButton.innerHTML = '<i class="fas fa-pause text-white mr-5"></i>';
+
+        });
+
+        toggleMuteButton.addEventListener('click', function () {
+            audioPlayer.muted = !audioPlayer.muted;
+            if (audioPlayer.muted) {
+                toggleMuteButton.innerHTML = '<i class="fas fa-volume-mute fa-lg text-white mr-5"></i>';
+            } else {
+                toggleMuteButton.innerHTML = '<i class="fas fa-volume-up fa-lg text-white mr-5"></i>';
+            }
+        });
+
+
+        // Función para cerrar el anuncio
+        function closeAd() {
+            var adContainer = document.getElementById("ad-container");
+            adContainer.style.display = "none";
+            var adVideo = document.getElementById("ad-video");
+            adVideo.pause();
+            adVideo.currentTime = 0;
+            setInterval(showAd, 10000);
+        }
+
+        function showAd() {
+            var adContainer = document.getElementById("ad-container");
+            adContainer.style.display = "block";
+            var adVideo = document.getElementById("ad-video");
+            adVideo.play(); // Iniciar reproducción del video
+
+            // Pausar la reproducción del reproductor de audio
+            audioPlayer.pause();
+
+            //setTimeout(function () {
+            //  adContainer.style.display = "none";
+            //adVideo.stop();
+            //            }, 20000); // 20 segundos
+        }
+
+        // Mostrar el anuncio al cargar la página y luego cada 20 segundos
+        window.onload = function () {
+            var adVideo = document.getElementById("ad-video");
+            showAd();
+            adVideo.play()
+        };
+
+        // Cerrar el anuncio cuando el video termine
+        var video = document.getElementById("ad-video");
+        video.addEventListener("ended", function () {
+            closeAd();
+        });
+
+
+
+        // Obtener el contexto de audio
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const analyser = audioCtx.createAnalyser();
+        const source = audioCtx.createMediaElementSource(audioPlayer);
+        source.connect(analyser);
+        analyser.connect(audioCtx.destination);
+
+        // Tamaño del buffer de análisis de audio
+        analyser.fftSize = 256;
+        const bufferLength = analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
+
+        // Función para actualizar el canvas
+        function updateCanvas() {
+            // Obtener datos de análisis de audio
+            analyser.getByteFrequencyData(dataArray);
+
+            // Ejemplo de efecto visual: cambiar el color de fondo del canvas basado en el promedio de frecuencias
+            const averageFrequency = dataArray.reduce((acc, val) => acc + val, 0) / bufferLength;
+            const backgroundColor = `rgb(${averageFrequency}, ${averageFrequency}, ${averageFrequency})`;
+            document.getElementById('visualizer').style.backgroundColor = backgroundColor;
+
+            // Repetir la actualización del canvas
+            requestAnimationFrame(updateCanvas);
+        }
+
+        // Iniciar la actualización del canvas
+        updateCanvas();
+    </script>
+</body>
+
+</html>

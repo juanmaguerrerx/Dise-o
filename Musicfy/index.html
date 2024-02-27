@@ -386,7 +386,7 @@
                             class="list-group-item list-group-item-action listh"><i
                                 class="bi bi-collection mr-2"></i></a>
                     </li>
-                   
+
                 </ul>
 
             </div>
@@ -580,14 +580,15 @@
                 
             </div>
         </div> -->
+        <audio id="audioPlayer">
+            <source src="./Audios/audios/cancion.mp3" type="audio/mp3">
+            <source src="./Audios/audios/cancion2.mp3" type="audio/mp3">
+        </audio>
         <canvas id="visualizer"
             style="position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></canvas>
 
     </div>
-    <audio id="audioPlayer">
-        <source src="./Audios/audios/cancion.mp3" type="audio/mp3">
-        <source src="./Audios/audios/cancion2.mp3" type="audio/mp3">
-    </audio>
+
 
 
 
@@ -612,6 +613,39 @@
             "./Audios/audios/cancion2.mp3"
         ];
 
+        // Declarar audioCtx como una variable global
+        let audioCtx;
+
+        // Función para iniciar el contexto de audio
+        function initializeAudioContext() {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const analyser = audioCtx.createAnalyser();
+            const source = audioCtx.createMediaElementSource(audioPlayer);
+            source.connect(analyser);
+            analyser.connect(audioCtx.destination);
+
+            // Tamaño del buffer de análisis de audio
+            analyser.fftSize = 256;
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+
+            // Función para actualizar el canvas
+            function updateCanvas() {
+                // Obtener datos de análisis de audio
+                analyser.getByteFrequencyData(dataArray);
+
+                // Ejemplo de efecto visual: cambiar el color de fondo del canvas basado en el promedio de frecuencias
+                const averageFrequency = dataArray.reduce((acc, val) => acc + val, 0) / bufferLength;
+                const backgroundColor = `rgb(${averageFrequency}, ${averageFrequency}, ${averageFrequency})`;
+                document.getElementById('visualizer').style.backgroundColor = backgroundColor;
+
+                // Repetir la actualización del canvas
+                requestAnimationFrame(updateCanvas);
+            }
+            // Iniciar la actualización del canvas
+            updateCanvas();
+        }
+
         togglePlayButton.addEventListener('click', function () {
             if (audioPlayer.paused) {
                 audioPlayer.play();
@@ -620,6 +654,11 @@
                 audioPlayer.pause();
                 togglePlayButton.innerHTML = '<i class="fas fa-play mr-5 text-white"></i>';
             }
+            if (!audioCtx) {
+                initializeAudioContext();
+            }
+
+
         });
 
         previousTrackButton.addEventListener('click', function () {
@@ -629,9 +668,9 @@
         });
 
         nextTrackButton.addEventListener('click', function () {
-            showAd();
             currentTrackIndex = (currentTrackIndex === tracks.length - 1) ? 0 : currentTrackIndex + 1;
-            audioPlayer.src = tracks[currentTrackIndex];            
+            audioPlayer.src = tracks[currentTrackIndex];
+            showAd();
         });
 
         toggleMuteButton.addEventListener('click', function () {
@@ -673,36 +712,6 @@
             closeAd();
         });
 
-
-
-        // Obtener el contexto de audio
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const analyser = audioCtx.createAnalyser();
-        const source = audioCtx.createMediaElementSource(audioPlayer);
-        source.connect(analyser);
-        analyser.connect(audioCtx.destination);
-
-        // Tamaño del buffer de análisis de audio
-        analyser.fftSize = 256;
-        const bufferLength = analyser.frequencyBinCount;
-        const dataArray = new Uint8Array(bufferLength);
-
-        // Función para actualizar el canvas
-        function updateCanvas() {
-            // Obtener datos de análisis de audio
-            analyser.getByteFrequencyData(dataArray);
-
-            // Ejemplo de efecto visual: cambiar el color de fondo del canvas basado en el promedio de frecuencias
-            const averageFrequency = dataArray.reduce((acc, val) => acc + val, 0) / bufferLength;
-            const backgroundColor = `rgb(${averageFrequency}, ${averageFrequency}, ${averageFrequency})`;
-            document.getElementById('visualizer').style.backgroundColor = backgroundColor;
-
-            // Repetir la actualización del canvas
-            requestAnimationFrame(updateCanvas);
-        }
-
-        // Iniciar la actualización del canvas
-        updateCanvas();
     </script>
 </body>
 
